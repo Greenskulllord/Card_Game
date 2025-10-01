@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Game extends GameWindow{
 
     /*TODO
@@ -14,8 +16,66 @@ public class Game extends GameWindow{
      */
 
     public static void main(String[] args) {
+        //variables that keep track of all game data
+        Boolean playerTurn = false;
+        Boolean opponentTurn = false;
+        Boolean gameEnd = false;
 
 
-        new GameWindow();
+        //events for the game to know what to do
+        enum EVENTS {
+            GAME_START,
+            GAME_END,
+            PLAYER_TURN,
+            DEALER_TURN;
+        }
+
+        EVENTS currentEvent = EVENTS.GAME_START;
+
+        switch (currentEvent) {
+            case GAME_START:
+                new GameWindow();
+                new Dealer();
+
+                //declare the players starter card when the game starts
+                Deck deck = new Deck();
+                ArrayList<Card> starterCard = deck.getDeck();
+
+                //declare the opponents card
+
+
+                break;
+
+            case PLAYER_TURN:
+                    boolean actionEnded = false;
+
+                    enum PLAYER_ACTIONS {
+                        IDLE,
+                        DRAW,
+                        STAND;
+                    }
+                   //idle is the action it will be on at the start of players turn
+                    PLAYER_ACTIONS currentAction = PLAYER_ACTIONS.IDLE;
+
+
+
+                break;
+
+            case DEALER_TURN:
+
+                @Override
+                void DealerAction() {
+                boolean turnStatus = false;
+                boolean endTurn = turnStatus;
+            }
+
+                break;
+
+            case GAME_END:
+
+                break;
+        }
+
+
     }
 }

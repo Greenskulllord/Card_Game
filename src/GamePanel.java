@@ -9,7 +9,6 @@ public class GamePanel extends JPanel implements ActionListener {
     private final int SCREEN_HEIGHT = 768;;
     private final int UNIT_SIZE = 180;
     private final int GAME_UNITS = (SCREEN_WIDTH * SCREEN_HEIGHT) / UNIT_SIZE;
-    private final boolean GAME_START;
     private NewButton drawButton;
     private int rectx = (int) (0.9 * SCREEN_WIDTH);
     private int recty = (int) (0.8 * SCREEN_HEIGHT);
@@ -20,7 +19,6 @@ public class GamePanel extends JPanel implements ActionListener {
     this.setBackground(Color.black);
     this.setSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
     this.setFocusable(true);
-    this.GAME_START = true;
 
     }
     //draw everything on screen
@@ -28,6 +26,7 @@ public class GamePanel extends JPanel implements ActionListener {
         super.paintComponent(g);
         drawGrid(g);
         drawButton(g);
+        standButton(g);
     }
 
     public void drawButton(Graphics r) {
@@ -41,8 +40,18 @@ public class GamePanel extends JPanel implements ActionListener {
         r.fillRoundRect(rectx, recty, rsize, rsize, 3, 3);
 
         //turn frame into button
-        drawButton = new DealButton(rectx, recty, rsize, rsize, this);
+        new DealButton(rectx, recty, rsize, rsize, this);
+    }
 
+    public void standButton(Graphics r) {
+        this.rectx = (int) (0.8 * SCREEN_WIDTH);
+        this.recty = (int) (0.8 * SCREEN_HEIGHT);
+        this.rsize = UNIT_SIZE / 2;
+
+        r.setColor(Color.red);
+        r.fillRoundRect(rectx, recty, rsize, rsize, 3, 3);
+
+        new StandButton(rectx, recty, rsize, rsize, this);
 
     }
 

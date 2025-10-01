@@ -10,12 +10,12 @@ class Draw {
         Deck deck = new Deck();
         ArrayList<Card> cardlist = deck.getDeck();
 
-        //this is a error block starter
+        //this is an error block starter
         try {
-            System.out.println(cardlist.get(cardIndex));
-            //every time a card is drawn/printed out, it adds one to the index so it goes through the whole deck in the Array
+            Card drawncard = cardlist.get(cardIndex);
+            System.out.println(drawncard);
+            System.out.println(drawncard.getCardValue());
             cardIndex++;
-
         } catch (IndexOutOfBoundsException e) {
             //when out of all 51 cards, tells user/system there is no more cards
             System.out.println("no more cards.");
