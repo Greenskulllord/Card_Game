@@ -1,14 +1,13 @@
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 
 
 
-public class NewButton {
-    private boolean eventstarted = false;
-    private String event;
-
+public abstract class NewButton {
+    boolean eventstarted = false;
     /**
      * int x
      * int y
@@ -23,7 +22,6 @@ public class NewButton {
 
                 if(e.getX() >= x && e.getX() <= x + width && e.getY() >= y && e.getY() <= y + height) {
                     eventstarted = true;
-                    System.out.println("y" + y);
                     clickevent();
                 }
             }
@@ -31,8 +29,8 @@ public class NewButton {
 
     }
 
-    private void clickevent() {
+    void clickevent() {
         eventstarted = false;
-        System.out.println("hi");
     }
+
 }
