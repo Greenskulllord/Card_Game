@@ -1,8 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-
-
-
 public class GameWindow extends JFrame {
     private final int SCREEN_WIDTH = 1366;
     private final int SCREEN_HEIGHT = 768;
