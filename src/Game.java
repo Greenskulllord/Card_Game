@@ -63,11 +63,6 @@ public class Game extends GameWindow{
 
             case DEALER_TURN:
 
-                @Override
-                void DealerAction() {
-                boolean turnStatus = false;
-                boolean endTurn = turnStatus;
-            }
 
                 break;
 
