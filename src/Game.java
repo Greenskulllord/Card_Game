@@ -62,6 +62,7 @@ public class Game extends GameWindow{
                 break;
 
             case DEALER_TURN:
+                int hi = 1;
 
 
                 break;

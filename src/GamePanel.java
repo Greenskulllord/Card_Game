@@ -28,6 +28,7 @@ public class GamePanel extends JPanel implements ActionListener {
         drawButton(g);
         standButton(g);
     }
+    int hi = 1;
 
     public void drawButton(Graphics r) {
         //declare variables

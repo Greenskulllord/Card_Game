@@ -5,7 +5,7 @@ public class Card {
     String suit;
     String name;
     int cardValue;
-
+    int hi = 1;
     //assigns each card object a suit and a name
     Card(String suit, String name){
         this.suit = suit;

@@ -7,6 +7,7 @@ public class GameWindow extends JFrame {
     private final int SCREEN_WIDTH = 1366;
     private final int SCREEN_HEIGHT = 768;
 
+    int hi = 1;
 
     GameWindow() {
 

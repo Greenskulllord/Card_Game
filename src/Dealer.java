@@ -9,7 +9,7 @@ public class Dealer {
         boolean turnStatus = false;
         endTurn = turnStatus;
     }
-
+    int hi = 1;
 
     Dealer() {
         boolean draw;

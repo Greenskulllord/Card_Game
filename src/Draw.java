@@ -9,7 +9,7 @@ class Draw {
 
         Deck deck = new Deck();
         ArrayList<Card> cardlist = deck.getDeck();
-
+        int hi = 1;
         //this is an error block starter
         try {
             Card drawncard = cardlist.get(cardIndex);
