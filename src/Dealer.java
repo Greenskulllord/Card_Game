@@ -21,6 +21,14 @@ public class Dealer {
                    utils.Wait(1000);
                    Card DealerHoleCard = deck.Draw();
                    System.out.println("Dealers second card: " + DealerHoleCard);
+
+                   //does a check if their aces and if they would become one.
+                   if (DealerHoleCard.getCardValue() == 11 && dealerHandValue > 10) {
+                       DealerHoleCard.cardValue = 1;
+                   }
+                   if (DealerCard.getCardValue() == 11 && dealerHandValue > 10) {
+                       DealerCard.cardValue = 1;
+                   }
                    dealerHandValue = DealerCard.getCardValue() + DealerHoleCard.getCardValue();
                    utils.Wait(1000);
                    System.out.println("Dealer's hand value is: " + dealerHandValue);
@@ -34,15 +42,18 @@ public class Dealer {
                    System.out.println("Dealer is out of cards");
                    break;
                }
-
+                //ace checker
                int cardValue = drawnCard.getCardValue();
+               if (drawnCard.getCardValue() == 11 && dealerHandValue > 10) {
+                   drawnCard.cardValue = 1;
+               }
+
                dealerHandValue = dealerHandValue + cardValue;
                System.out.println("Dealer draws: " + drawnCard);
                utils.Wait(1000);
                System.out.println("Dealer hand value is now: " + dealerHandValue);
-               if (drawnCard.getCardValue() == 11 && dealerHandValue > 10) {
-                   drawnCard.cardValue = 1;
-               }
+
+
            }
 
            // After reaching 17, dealer hits if they are losing to the player
@@ -55,14 +66,17 @@ public class Dealer {
                     System.out.println("Dealer is out of cards");
                     break;
                 }
+                //ace checker
                 int cardValue = drawnCard.getCardValue();
+               if (drawnCard.getCardValue() == 11 && dealerHandValue > 10) {
+                   drawnCard.cardValue = 1;
+               }
+
                 dealerHandValue = dealerHandValue + cardValue;
                 System.out.println("Dealer draws: " + drawnCard);
                utils.Wait(1000);
                 System.out.println("Dealer hand value is now: " + dealerHandValue);
-               if (drawnCard.getCardValue() == 11 && dealerHandValue > 10) {
-                   drawnCard.cardValue = 1;
-               }
+
 
            }
 

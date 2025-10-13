@@ -114,6 +114,11 @@ public class Game extends GameWindow {
                                     } else {
                                         System.out.println("invalid input, try 'hit' or stand'");
                                     }
+                                    //if player gets blackjack during drawing sequence, they will immediately win
+                                    if (playerHandValue == 21) {
+                                        System.out.println("Blackjack! You win!");
+                                        currentEvent = EVENTS.GAME_END;
+                                    }
                                     break;
                             }
                         }
@@ -148,7 +153,7 @@ public class Game extends GameWindow {
                     System.out.println("the dealer wins");
                     utils.Wait(1000);
                     System.out.println("the player loses.");
-                } else {
+                } else if (dealer.dealerHandValue < playerHandValue){
                     System.out.println("the player wins.");
                 }
 
