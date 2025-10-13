@@ -54,7 +54,7 @@ public class Card {
                 cardValue = 9;
                 break;
             default:
-                cardValue = 9999999;
+                cardValue = 999999999;
                 break;
         }
         return cardValue;

@@ -4,7 +4,7 @@ import java.util.Collections;
 class Deck {
     //this class creates deck objects filled with card objects
 
-    //declare variables
+    //declare variabless
     static String[] suitname = {"spades", "hearts", "diamonds", "clubs"};
     static String[] cardname = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
     ArrayList<Card> deck = new ArrayList<>();

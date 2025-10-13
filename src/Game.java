@@ -11,9 +11,8 @@ public class Game extends GameWindow {
         * create a opponent that also draws cards(DONE)
         * create a win/lose condition(DONE)
         #-------------stuff to do within the actual game window like display cards and stats------------
-        *
-
-
+        * class to hold all images(NOT STARTED)
+        * Display cards as a visual display(NOT STARTED)
      */
 
     public static void main(String[] args) {
@@ -40,8 +39,10 @@ public class Game extends GameWindow {
                     case GAME_START:
                         //new GameWindow();
                         //for playing in the console
-                        //im doing this so i have can split the project of learning Jpanels and also having something done for midterm
-                        //this is because, j panels are hella complicated to learn and i wouldn't have time to implement it anyway
+                        //im doing this so i have can split the project of learning Jpanels
+                        //   and also having something done for midterm
+                        //this is because, j panels are hella complicated to learn
+                        //   and i wouldn't have time to implement it anyway
 
                         System.out.println("press Enter to Start");
                         scanner.nextLine();
@@ -51,10 +52,10 @@ public class Game extends GameWindow {
                         Card playerHoleCard = deck.Draw();
                         System.out.println("Your second card: " + playerHoleCard);
                         //adds your starter cards to your hand
-                        playerHandValue = playerHandValue + playerCard.getCardValue() + playerHoleCard.getCardValue();
+                        playerHandValue = playerCard.getCardValue() + playerHoleCard.getCardValue();
                         currentEvent = EVENTS.PLAYER_TURN;
 
-                        //check if player auto wins or dealer auto wins
+                        //check if player auto wins
                         if (playerHandValue == 21) {
                             System.out.println("Blackjack! You win!");
                             currentEvent = EVENTS.GAME_END;
@@ -72,9 +73,10 @@ public class Game extends GameWindow {
                             DRAW,
                             STAND;
                         }
-
+                        //idle is a state where it waits for player input
                         PLAYER_ACTIONS currentAction = PLAYER_ACTIONS.IDLE;
 
+                        //thrown into a while loop so it keeps going with the players turn until they end it themselves
                         while (!endturn) {
                             switch (currentAction) {
                                 case DRAW:
@@ -123,7 +125,7 @@ public class Game extends GameWindow {
                             }
                         }
                         break;
-
+                    //when its dealer's turn, it runs the dealer AI class
                     case DEALER_TURN:
                         System.out.println("--------Dealer's turn----------");
 
@@ -133,7 +135,7 @@ public class Game extends GameWindow {
                         if (dealer.dealerHandValue == 21) {
                             System.out.println("Dealer has Blackjack! You lose.");
                         }
-
+                        //once dealer's turn is over, end game and calculate everything to decide who wins
                         currentEvent = EVENTS.GAME_END;
                         break;
                 }
@@ -157,15 +159,14 @@ public class Game extends GameWindow {
                     System.out.println("the player wins.");
                 }
 
-
                 //this adds replayability and delays because I like them
                 System.out.println("Play Again?");
                 String playAgain = scanner.nextLine();
-                if (playAgain.equalsIgnoreCase("yes")) {
+                if (playAgain.equalsIgnoreCase(utils.StringYesInputs())) {
                     System.out.println("Resetting game");
                     utils.Wait(1000);
                     gameEnd = false;
-                } else if (playAgain.equalsIgnoreCase("no")) {
+                } else if (playAgain.equalsIgnoreCase(utils.StringNoInputs())) {
                     System.out.println("---------thanks for playing---------");
                     gameEnd = true;
                 } else {

@@ -13,7 +13,7 @@ public class Dealer {
                //add a delay
                utils.Wait(1000);
 
-               //block of code that determines what the first cards the dealer has are. yes I copied and pasted
+               //block of code that determines what the first cards the dealer has are. yes I copied and pasted.
 
                while(start) {
                    Card DealerCard = deck.Draw();
