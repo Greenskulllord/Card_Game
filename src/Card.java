@@ -5,7 +5,7 @@ public class Card {
     String suit;
     String name;
     int cardValue;
-    int hi = 1;
+
     //assigns each card object a suit and a name
     Card(String suit, String name){
         this.suit = suit;
@@ -20,7 +20,7 @@ public class Card {
 
     //assigns each name to a value
     private int setCardValue(String name) {
-
+        //gives every single card a set value, Aces are more complicated
         switch (name) {
             case "A":
                 cardValue = 11;

@@ -1,69 +1,57 @@
-import java.util.ArrayList;
-
 public class Dealer {
 
-    int handValue = 0;
+    int dealerHandValue = 0;
     boolean endTurn;
 
-    void DealerAction() {
-        boolean turnStatus = false;
-        endTurn = turnStatus;
-    }
-    int hi = 1;
-
     Dealer() {
-        boolean draw;
-        boolean stand;
-        int cardValue;
+        this.endTurn = false;
+    }
 
-        //declare the opponents deck
-        Deck dealerDeck = new Deck();
-        ArrayList<Card> cardList = dealerDeck.getDeck();
+    public void DealerTurn(Deck deck, int playerHandValue) {
+           //dealer draws cards until they reach 17
+           while(dealerHandValue < 17) {
+               //add a delay
+               try {
+                   Thread.sleep(1500);
+               } catch (InterruptedException e) {
+                   Thread.currentThread().interrupt();
+               }
 
-        //keep drawing when under 17
-        while(handValue < 17) {
-           draw = true;
-            if (draw) {
-                //randomize what card the opponent pulls
-                int randomIndex = (int) (Math.random() * 53);
-                Card drawnCard = cardList.get(randomIndex);
-                cardValue = drawnCard.getCardValue();
-                cardList.remove(randomIndex);
+               //script that draws card and does math
+               Card drawnCard = deck.Draw();
+               if (drawnCard == null) {
+                   System.out.println("Dealer is out of cards");
+                   break;
+               }
 
-                //this is an error block starter
+               int cardValue = drawnCard.getCardValue();
+               dealerHandValue = dealerHandValue + cardValue;
+               System.out.println("Dealer draws: " + drawnCard);
+               System.out.println("Dealer hand value is now: " + dealerHandValue);
+           }
+
+           // After reaching 17, dealer hits if they are losing to the player
+           while(dealerHandValue < playerHandValue && playerHandValue <= 21) {
+                //add a delay
                 try {
-                    System.out.println("Dealer's card: " + drawnCard);
-                    handValue = handValue + cardValue;
-
-                } catch (IndexOutOfBoundsException e) {
-                    //if for some reason there is a bug and there isn't cards, default to a stand action
-                    endTurn = true;
+                    Thread.sleep(1500);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
                 }
 
-                endTurn = true;
-            }
-            //break loop when endTurn is true
-            if (endTurn) {
-                break;
-            }
-        }
+                Card drawnCard = deck.Draw();
+                if (drawnCard == null) {
+                    System.out.println("Dealer is out of cards");
+                    break;
+                }
+                int cardValue = drawnCard.getCardValue();
+                dealerHandValue = dealerHandValue + cardValue;
+                System.out.println("Dealer draws: " + drawnCard);
+                System.out.println("Dealer hand value is now: " + dealerHandValue);
+           }
 
-        //always stand when opponent is at 16 and above
-        while (handValue > 17) {
-            stand = true;
-
-            if (stand) {
-                //do nothing
-                System.out.println("stand");
-                endTurn = true;
-            }
-            //break loop when endTurn is true
-            if (endTurn) {
-                break;
-            }
-        }
-
+           //dealer will check if their above 17 and if they are winning, if so. stand
+           System.out.println("The dealer stands.");
+           this.endTurn = true;
     }
 }
-
-

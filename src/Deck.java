@@ -8,7 +8,9 @@ class Deck {
     static String[] suitname = {"spades", "hearts", "diamonds", "clubs"};
     static String[] cardname = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
     ArrayList<Card> deck = new ArrayList<>();
-    int hi = 1;
+    private int cardIndex;
+
+
     Deck() {
         //card creation
         deck = getCards();
@@ -35,5 +37,16 @@ class Deck {
             }
         }
         return Newdeck;
+    }
+
+    public Card Draw() {
+        //this is an error block starter
+        if (cardIndex >= deck.size()) {
+            System.out.println("no more cards.");
+            return null;
+        }
+        Card cardDrawn = this.deck.get(cardIndex);
+        cardIndex++;
+        return cardDrawn;
     }
 }
