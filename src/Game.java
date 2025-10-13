@@ -18,7 +18,7 @@ public class Game extends GameWindow {
 
     public static void main(String[] args) {
         Boolean gameEnd = false;
-
+        Utils utils = new Utils();
         while (!gameEnd) {
             //variables that keep track of all game data
             Scanner scanner = new Scanner(System.in);
@@ -127,7 +127,6 @@ public class Game extends GameWindow {
                         //if dealer has a 21, insta-win
                         if (dealer.dealerHandValue == 21) {
                             System.out.println("Dealer has Blackjack! You lose.");
-                            scanner.close();
                         }
 
                         currentEvent = EVENTS.GAME_END;
@@ -139,48 +138,34 @@ public class Game extends GameWindow {
             if (currentEvent.equals(EVENTS.GAME_END)) {
                 //ends game after win/lose condition is met
                 //add delay for readability
-                try {
-                    Thread.sleep(1500);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
+                utils.Wait(1000);
 
                 if (dealer.dealerHandValue > 21) {
                     System.out.println("the dealer busts");
+                    utils.Wait(1000);
                     System.out.println("the player wins.");
                 } else if (dealer.dealerHandValue >= playerHandValue) {
                     System.out.println("the dealer wins");
+                    utils.Wait(1000);
                     System.out.println("the player loses.");
                 } else {
                     System.out.println("the player wins.");
                 }
 
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
+
                 //this adds replayability and delays because I like them
                 System.out.println("Play Again?");
                 String playAgain = scanner.nextLine();
                 if (playAgain.equalsIgnoreCase("yes")) {
                     System.out.println("Resetting game");
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
+                    utils.Wait(1000);
                     gameEnd = false;
                 } else if (playAgain.equalsIgnoreCase("no")) {
                     System.out.println("---------thanks for playing---------");
                     gameEnd = true;
                 } else {
                     System.out.println("that's close enough to a 'no'...");
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
+                    utils.Wait(1000);
                     System.out.println("---------thanks for playing---------");
                     gameEnd = true;
                 }

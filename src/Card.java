@@ -13,6 +13,7 @@ public class Card {
         this.cardValue = setCardValue(name);
     }
 
+
     //method to allow other classes to access the value
     public int getCardValue() {
         return this.cardValue;
@@ -51,6 +52,9 @@ public class Card {
                 break;
             case "9":
                 cardValue = 9;
+                break;
+            default:
+                cardValue = 9999999;
                 break;
         }
         return cardValue;
